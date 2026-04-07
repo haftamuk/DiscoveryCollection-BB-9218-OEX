@@ -30,6 +30,21 @@ The collection allows you to:
 2. Choose `DiscoveryCollection-BB-9218-OEX.postman_collection.json`  
 3. The collection `DiscoveryCollection-BB-9218-OEX` will be added  
 
+## Generate JWT
+Access admin page: (http://local.openedx.io:8000/admin/oauth2_provider/application/)
+ `jwtGenerator.py` code generates a valid jwt_token to access open edx rest api
+ In order to run this file follow the following instructions.
+
+ 1. Install required packages
+    ```bash
+    pip install requests
+ 2. Access the `jwtGenerator.py` and replace the following placeholders with your actual values:
+ `REPLACE_ME_1`: Your OAuth2 application's Client ID.
+ `REPLACE_ME_2`: Your OAuth2 application's Client Secret.
+ `RPLACE_ME_3`: The domain of your Open edX LMS (e.g., myuniversity.edx.org).
+
+ Reference: [Please refer to this link for a complete documentation.](https://github.com/openedx/openedx-platform/blob/master/docs/how-tos/use_the_api.rst)
+
 ## Step 2: Configure Environment Variables
 
 Fill in the following required variables:
@@ -50,3 +65,4 @@ Fill in the following required variables:
 | **AddLibraryTeamMember** | POST | Adds a new member (by email) with a specified `access_level` (`read`, `admin`). |
 | **UpdateLibraryMemberRole** | PUT | Updates the role of an existing team member. |
 | **DeleteLibraryTeamMember** | DELETE | Removes a team member from the library. |
+
