@@ -1,0 +1,832 @@
+{
+  "info": {
+    "_postman_id": "79865cfb-8942-499a-a1e0-fe23e27b0725",
+    "name": "DiscoveryCollection-BB-9218-OEX",
+    "description": "This collection covers library related operations including creating libraries and managing team members within them through API in response to a discovery \\[BB-9218\\] OEX: Discovery for Creating a Content Library and Assigning Admin Roles via API in Open edX from Salesforce.\n\n**Base URL:** `{{base_url}}` **Authentication:** All requests require a JWT token passed as:\n\n```\nAuthorization: JWT {{jwt_token}}\n\n ```\n\n---\n\n### Environment Variables\n\n| Variable | Description |\n| --- | --- |\n| `base_url` | The base url is extracted and put sepparatly for reusability purpose, it can be merged to each request urls if prefered. |\n| `jwt_token` | During demonstration, the value of jwt_token is extracted from an active session in a browser. A combination of edx-jwt-cookie-header-payload and edx-jwt-cookie-signature is used to form a complete jwt_token by which requests will be allowed. |\n| `library_id` | Except when creating a new library record, all other api calls involve a specific library to wich you may add a new team member, modify role of a team member or other tasks. The library_id is a provided here as a parameter for reusability perposes only. |\n| `teammember` | When performing access management, we can use an existing user to demonstrate add a new team member, modify or remove team member. teammember is separatly provided as a setting for reusability purposes. |",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52034910",
+    "_collection_link": "https://go.postman.co/collection/52034910-79865cfb-8942-499a-a1e0-fe23e27b0725?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "CreateLibrary",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "JWT {{jwt_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"description\": \"Optional library description\",\n    \"title\": \"MynewLibrary5\",\n    \"org\": \"MynewLibrary5ORG\",\n    \"slug\": \"MynewLibrary5ID\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/libraries/v2/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "libraries",
+            "v2",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "CreateLibrary",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "JWT {{jwt_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"description\": \"Optional library description\",\n    \"title\": \"MynewLibrary5\",\n    \"org\": \"MynewLibrary5ORG\",\n    \"slug\": \"MynewLibrary5ID\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/libraries/v2/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "libraries",
+                "v2",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 08:44:49 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, HEAD, OPTIONS"
+            },
+            {
+              "key": "Server-Timing",
+              "value": "TimerPanel_utime;dur=153.85799999995697;desc=\"User CPU time\", TimerPanel_stime;dur=6.619000000000597;desc=\"System CPU time\", TimerPanel_total;dur=160.47699999995757;desc=\"Total CPU time\", TimerPanel_total_time;dur=166.9375109995599;desc=\"Elapsed time\", SQLPanel_sql_time;dur=19.659273998513527;desc=\"SQL 22 queries\", CachePanel_total_time;dur=0;desc=\"Cache 0 Calls\""
+            },
+            {
+              "key": "djdt-store-id",
+              "value": "9839447c44d44ebf8e1f71a0f298cad3"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept-Language, Cookie, origin"
+            },
+            {
+              "key": "Content-Language",
+              "value": "en"
+            },
+            {
+              "key": "Content-Length",
+              "value": "490"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "openedx-language-preference=en; Domain=studio.local.openedx.io; expires=Sun, 19 Apr 2026 08:44:49 GMT; Max-Age=1209600; Path=/; SameSite=Lax"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": \"lib:MynewLibrary5ORG:MynewLibrary5ID\",\n    \"org\": \"MynewLibrary5ORG\",\n    \"slug\": \"MynewLibrary5ID\",\n    \"title\": \"MynewLibrary5\",\n    \"description\": \"Optional library description\",\n    \"num_blocks\": 0,\n    \"version\": 0,\n    \"last_published\": null,\n    \"published_by\": \"\",\n    \"last_draft_created\": null,\n    \"last_draft_created_by\": \"\",\n    \"allow_lti\": false,\n    \"allow_public_learning\": false,\n    \"allow_public_read\": false,\n    \"has_unpublished_changes\": false,\n    \"has_unpublished_deletes\": false,\n    \"license\": \"\",\n    \"can_edit_library\": false,\n    \"created\": null,\n    \"updated\": null\n}"
+        }
+      ]
+    },
+    {
+      "name": "GetLibraryTeamMembers",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "JWT {{jwt_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/libraries/v2/{{library_id}}/team/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "libraries",
+            "v2",
+            "{{library_id}}",
+            "team",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "GetLibraryTeamMembers",
+          "originalRequest": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "JWT {{jwt_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/libraries/v2/{{library_id}}/team/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "libraries",
+                "v2",
+                "{{library_id}}",
+                "team",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 08:48:36 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, HEAD, OPTIONS"
+            },
+            {
+              "key": "Server-Timing",
+              "value": "TimerPanel_utime;dur=58.35700000000088;desc=\"User CPU time\", TimerPanel_stime;dur=2.4779999999964275;desc=\"System CPU time\", TimerPanel_total;dur=60.83499999999731;desc=\"Total CPU time\", TimerPanel_total_time;dur=63.749164999535424;desc=\"Elapsed time\", SQLPanel_sql_time;dur=3.752946998247353;desc=\"SQL 5 queries\", CachePanel_total_time;dur=0;desc=\"Cache 0 Calls\""
+            },
+            {
+              "key": "djdt-store-id",
+              "value": "487c1a1ad82842c69c8837c20771a72e"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept-Language, Cookie, origin"
+            },
+            {
+              "key": "Content-Language",
+              "value": "en"
+            },
+            {
+              "key": "Content-Length",
+              "value": "95"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "openedx-language-preference=en; Domain=studio.local.openedx.io; expires=Sun, 19 Apr 2026 08:48:36 GMT; Max-Age=1209600; Path=/; SameSite=Lax"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"access_level\": \"admin\",\n        \"email\": \"haftamu.k@gmail.com\",\n        \"username\": \"haftamu\",\n        \"group_name\": null\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "AddLibraryTeamMember",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "JWT {{jwt_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"test@mu.edu.et\", \"access_level\": \"read\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/libraries/v2/{{library_id3}}/team/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "libraries",
+            "v2",
+            "{{library_id3}}",
+            "team",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "AddLibraryTeamMember",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "JWT {{jwt_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\": \"test@mu.edu.et\", \"access_level\": \"read\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/libraries/v2/{{library_id}}/team/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "libraries",
+                "v2",
+                "{{library_id}}",
+                "team",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 08:46:11 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, HEAD, OPTIONS"
+            },
+            {
+              "key": "Server-Timing",
+              "value": "TimerPanel_utime;dur=105.8079999999677;desc=\"User CPU time\", TimerPanel_stime;dur=0.0;desc=\"System CPU time\", TimerPanel_total;dur=105.8079999999677;desc=\"Total CPU time\", TimerPanel_total_time;dur=116.32044700036204;desc=\"Elapsed time\", SQLPanel_sql_time;dur=13.879375999749755;desc=\"SQL 15 queries\", CachePanel_total_time;dur=0;desc=\"Cache 0 Calls\""
+            },
+            {
+              "key": "djdt-store-id",
+              "value": "bc6f0116e6594031b7e8bd1fab7e8d6d"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept-Language, Cookie, origin"
+            },
+            {
+              "key": "Content-Language",
+              "value": "en"
+            },
+            {
+              "key": "Content-Length",
+              "value": "85"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "openedx-language-preference=en; Domain=studio.local.openedx.io; expires=Sun, 19 Apr 2026 08:46:11 GMT; Max-Age=1209600; Path=/; SameSite=Lax"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"access_level\": \"read\",\n    \"email\": \"test@mu.edu.et\",\n    \"username\": \"test1\",\n    \"group_name\": null\n}"
+        }
+      ]
+    },
+    {
+      "name": "UpdateLibraryMemberRole",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful PUT request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "JWT {{jwt_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "// (or \"admin\", \"read\")\n{\"access_level\": \"read\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/libraries/v2/{{library_id}}/team/user/{{teammember}}/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "libraries",
+            "v2",
+            "{{library_id}}",
+            "team",
+            "user",
+            "{{teammember}}",
+            ""
+          ]
+        },
+        "description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+      },
+      "response": [
+        {
+          "name": "UpdateLibraryMemberRole",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "JWT {{jwt_token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "// (or \"admin\", \"read\")\n{\"access_level\": \"admin\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/libraries/v2/{{library_id}}/team/user/{{teammember}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "libraries",
+                "v2",
+                "{{library_id}}",
+                "team",
+                "user",
+                "{{teammember}}",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 08:46:25 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, PUT, DELETE, HEAD, OPTIONS"
+            },
+            {
+              "key": "Server-Timing",
+              "value": "TimerPanel_utime;dur=74.0729999999985;desc=\"User CPU time\", TimerPanel_stime;dur=9.821999999985565;desc=\"System CPU time\", TimerPanel_total;dur=83.89499999998407;desc=\"Total CPU time\", TimerPanel_total_time;dur=87.39412600061769;desc=\"Elapsed time\", SQLPanel_sql_time;dur=11.737321000509837;desc=\"SQL 13 queries\", CachePanel_total_time;dur=0;desc=\"Cache 0 Calls\""
+            },
+            {
+              "key": "djdt-store-id",
+              "value": "b8062bba135f42e88d360e6fa11f2bd1"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept-Language, Cookie, origin"
+            },
+            {
+              "key": "Content-Language",
+              "value": "en"
+            },
+            {
+              "key": "Content-Length",
+              "value": "86"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "openedx-language-preference=en; Domain=studio.local.openedx.io; expires=Sun, 19 Apr 2026 08:46:25 GMT; Max-Age=1209600; Path=/; SameSite=Lax"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"access_level\": \"admin\",\n    \"email\": \"test@mu.edu.et\",\n    \"username\": \"test1\",\n    \"group_name\": null\n}"
+        }
+      ]
+    },
+    {
+      "name": "DeleteLibraryTeamMember",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful DELETE request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "JWT {{jwt_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/libraries/v2/{{library_id3}}/team/user/{{teammember}}/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "libraries",
+            "v2",
+            "{{library_id3}}",
+            "team",
+            "user",
+            "{{teammember}}",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "DeleteLibraryTeamMember",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "JWT {{jwt_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/api/libraries/v2/{{library_id}}/team/user/{{teammember}}/",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "libraries",
+                "v2",
+                "{{library_id}}",
+                "team",
+                "user",
+                "{{teammember}}",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Sun, 05 Apr 2026 08:46:36 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.11.8"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, PUT, DELETE, HEAD, OPTIONS"
+            },
+            {
+              "key": "Server-Timing",
+              "value": "TimerPanel_utime;dur=108.84500000003072;desc=\"User CPU time\", TimerPanel_stime;dur=12.529999999969732;desc=\"System CPU time\", TimerPanel_total;dur=121.37500000000045;desc=\"Total CPU time\", TimerPanel_total_time;dur=121.6275870001482;desc=\"Elapsed time\", SQLPanel_sql_time;dur=8.906907000891806;desc=\"SQL 9 queries\", CachePanel_total_time;dur=0;desc=\"Cache 0 Calls\""
+            },
+            {
+              "key": "djdt-store-id",
+              "value": "fc78fe943c7a4dba9a46edc52f035035"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept-Language, Cookie, origin"
+            },
+            {
+              "key": "Content-Language",
+              "value": "en"
+            },
+            {
+              "key": "Content-Length",
+              "value": "2"
+            },
+            {
+              "key": "Set-Cookie",
+              "value": "openedx-language-preference=en; Domain=studio.local.openedx.io; expires=Sun, 19 Apr 2026 08:46:36 GMT; Max-Age=1209600; Path=/; SameSite=Lax"
+            }
+          ],
+          "cookie": [],
+          "body": "{}"
+        }
+      ]
+    },
+    {
+      "name": "GetLibraryTeamMembers",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "JWT {{jwt_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/libraries/v2/{{library_id}}/team/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "libraries",
+            "v2",
+            "{{library_id}}",
+            "team",
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://template.postman-echo.com"
+    },
+    {
+      "key": "jwt_token",
+      "value": ""
+    },
+    {
+      "key": "library_id",
+      "value": ""
+    },
+    {
+      "key": "teammember",
+      "value": ""
+    },
+    {
+      "key": "Content-Type",
+      "value": ""
+    }
+  ]
+}
