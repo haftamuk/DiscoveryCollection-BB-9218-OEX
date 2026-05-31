@@ -32,16 +32,20 @@ The collection allows you to:
 
 ## Generate JWT
 Access admin page: (http://local.openedx.io:8000/admin/oauth2_provider/application/)
- `jwtGenerator.py` code generates a valid jwt_token to access open edx rest api
+- Add an aplication 
+Note: Please keep note of Client id and Client secret you will use them in the next step.
+
+- Use  `jwtGenerator.py`, it generates a valid jwt_token to access open edx rest api
  In order to run this file follow the following instructions.
 
  1. Install required packages
     ```bash
     pip install requests
- 2. Access the `jwtGenerator.py` and replace the following placeholders with your actual values:
+ 2. Access the `jwtGenerator.py` and replace the following placeholders with your actual values noted from the above step.
  `REPLACE_ME_1`: Your OAuth2 application's Client ID.
  `REPLACE_ME_2`: Your OAuth2 application's Client Secret.
  `RPLACE_ME_3`: The domain of your Open edX LMS (e.g., myuniversity.edx.org).
+3. run `python3 jwtGenerator.py` if you are using JWT or `bearerGenerator.py` if you are using Bearer Authentication
 
  Reference: [Please refer to this link for a complete documentation.](https://github.com/openedx/openedx-platform/blob/master/docs/how-tos/use_the_api.rst)
 
@@ -53,6 +57,7 @@ Fill in the following required variables:
 |----------|-------------|---------|
 | `base_url` | Base URL of your Open edX Studio instance | e.g. `http://studio.local.openedx.io:8001` |
 | `jwt_token` | A valid JWT token | e.g. `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...` |
+| `bearer` | A valid JWT token | e.g. `HSPHrenGfcny9DW3471SMpkg3dHzWz` |
 | `library_id` | ID of an existing library – used for team management | e.g. `lib:MynewLibrary2ORG:MynewLibrary2ID` |
 | `teammember` | Username or email of a team member to modify/delete | e.g. `testuser` |
 
